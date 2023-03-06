@@ -1,0 +1,119 @@
+.body{
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #890bc8);
+    background-size: 400% 400%;
+    animation: gradient 7s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container-login{
+    height: 60%;
+    width: 30%;
+    top: 20vh;
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 5px;
+    min-width: 350px;
+    background-color: white;
+}
+
+.container-signup{
+    width: 30%;
+    top: 15vh;
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 5px;
+    min-width: 350px;
+    background-color: white;
+}
+
+.heading{
+    font-size: 30px;
+    height: 2rem;
+    margin: 2rem auto;
+    letter-spacing: 5px;
+    /* font-weight: 800; */
+    font-family: 'Anton', sans-serif;
+
+}
+
+.authInput{
+    width: 80%;
+    padding: 1rem;
+    margin: 1rem auto;
+    outline: none;
+    border: none;
+    color: black;
+    border: 1px solid black;
+    background-color: transparent;
+    letter-spacing: 3px;
+}
+.authInput::placeholder{
+    color: black;
+}
+
+.authButton{
+    padding: 0.5rem 3rem;
+    width: 5rem;
+    display: flex;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-family: 'Didact Gothic', sans-serif;
+    justify-content: center;
+    margin: 1rem auto;
+}
+.moreButton{
+    padding: 0.5rem 3rem;
+    width: 5rem;
+    display: flex;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-family: 'Didact Gothic', sans-serif;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+.moreButton:hover, .authButton:hover{
+    background-color: white;
+    color: black;
+}
+
+.moreSection {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+}
+
+.alert{
+    color: black;
+    margin-left: 3rem;
+    font-size: 12px;
+}

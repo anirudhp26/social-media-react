@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.root{
+    font-family: 'Didact Gothic', sans-serif;
+    /* background-color: rgb(52, 52, 255); */
+    background-color: rgb(32, 32, 32);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 12vh;
+}
+.root > ul{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    min-width: 220px;
+}
+
+.root > p {
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    transition: all 0.5s;
+}
+.root > p:hover {
+    background-color: black;
+}
+.root > ul > li{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
+.root > ul > input{
+    width: 80%;
+    padding: 1rem 2rem;
+    margin: 0 2rem;
+    background-color: rgb(85, 85, 85);
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.root > ul > input::placeholder{
+    color: rgb(177, 177, 177);
+    letter-spacing: 1px;
+}
+
+.root > ul > input:hover{
+    transition: all 0.5s;
+    background-color: rgb(73, 73, 73);
+}
+.root > ul > li:hover{
+    transition: all 0.5s;
+    background-color: black;
+}
+.root > ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+
+.acc-section{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+    justify-content: center;
+    transition: all 0.5s;
+    align-items: center;
+}
+.acc-section:hover{
+    background-color: black;
+}
+.dropdown-ul {
+    display: flex;
+    position: absolute;
+    top: -20vh;
+    z-index: -1;
+    width: 15%;
+    background-color: rgb(32, 32, 32);
+    /* background-color: rgb(52, 52, 255); */
+    flex-direction: column;
+    transition: all 0.5s;
+}
+.dropdown-ul li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 3rem;
+    transition: all 0.5s;
+}
+.dropdown-ul li a {
+    text-decoration: none;
+    color: white;
+}
+.dropdown-ul li:hover{
+    background-color: black;
+}
+.dropdown-ul-modified{
+    top: 12vh;
+}
+
+.acc-section > a {
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+}
+.acc-section > img {
+    width: 45px;
+    margin-bottom: 3px;
+    min-width: 45px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }

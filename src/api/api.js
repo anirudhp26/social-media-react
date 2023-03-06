@@ -1,0 +1,1 @@
+export default api = "http://backend.eba-yikpymsg.ap-south-1.elasticbeanstalk.com/";
