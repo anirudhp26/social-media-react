@@ -11,29 +11,33 @@ export default function Header(props) {
         Axios.get('https://backend-sm.vercel.app/logout').then((response) => {
             navigate('/login');
         })
-    }   
+    }
 
-    const userSearch = () => {
-        Axios.get('https://backend-sm.vercel.app/getUsers', {keyword: search}).then((responce) => {
+    const userSearch = (value) => {
+        Axios.post('https://backend-sm.vercel.app/getUsers', { keyword: value }).then((responce) => {
             console.log(responce.data);
             setUsers(responce.data);
         })
+    };
+    const handleSearch = (value) => {
+        setSearch(value);
+        userSearch(value);
     }
     const onlyForLoggedin = () => {
         if (props.loginStatus) {
             return (
                 <div className="acc-section">
                     <img src="./anon-pp.png" alt="pp" onMouseEnter={() => {
-                            var img = document.getElementById("more-options")
-                            img.classList.toggle("dropdown-ul-modified")
-                        }
+                        var img = document.getElementById("more-options")
+                        img.classList.toggle("dropdown-ul-modified")
+                    }
                     }></img>
                     <a href="/">{props.username}</a>
                     <ul className="dropdown-ul" id="more-options" onMouseLeave={() => {
                         var img = document.getElementById("more-options")
                         img.classList.toggle("dropdown-ul-modified")
                     }
-                }>
+                    }>
                         <li className="dropdown-li"><a onClick={() => {
                             navigate(`/${props.username}`)
                         }}>My Account</a></li>
@@ -42,12 +46,13 @@ export default function Header(props) {
                     </ul>
                 </div>
             )
-        } else{
-            return(
+        } else {
+            return (
                 <button onClick={navigate('/login')}>Login/SignUP</button>
             )
         }
     }
+
     return (
         <>
             <div className="root">
@@ -55,9 +60,19 @@ export default function Header(props) {
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/">Explore</a></li>
-                    <input placeholder="Search" onChange={(e) => {
-                        setSearch(e.target.value);
-                    }}></input>
+                    <div className="userSearch">
+                        <input placeholder="Search" value={search} onChange={(e) => {
+                            handleSearch(e.target.value);
+                        }}></input>
+                        {users.length === 0 ? <></> : <><ul>
+                            {users.map((value) => {
+                                return (
+                                    <li key={value._id}><a>{value.username}</a></li>
+                                )
+                            })}
+                        </ul></>}
+
+                    </div>
                 </ul>
                 {onlyForLoggedin()}
             </div>

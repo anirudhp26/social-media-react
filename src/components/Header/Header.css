@@ -44,7 +44,7 @@
     width: 33%;
 }
 
-.root > ul > input{
+.root > ul input{
     width: 80%;
     padding: 1rem 2rem;
     margin: 0 2rem;
@@ -54,12 +54,12 @@
     border: none;
 }
 
-.root > ul > input::placeholder{
+.root > ul input::placeholder{
     color: rgb(177, 177, 177);
     letter-spacing: 1px;
 }
 
-.root > ul > input:hover{
+.root > ul input:hover{
     transition: all 0.5s;
     background-color: rgb(73, 73, 73);
 }
@@ -71,6 +71,33 @@
     text-decoration: none;
     font-size: 20px;
     color: white;
+}
+
+.userSearch{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.userSearch > ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 12vh;
+    list-style: none;
+    background-color: rgb(32, 32, 32);
+}
+
+.userSearch > ul > li {
+    width: 20rem;
+    padding: 2rem;
+    transition: all 0.5s;
+}
+
+.userSearch > ul > li:hover{
+    width: 21rem;
+    padding: 3rem;
+    background-color: rgb(85, 85, 85);
 }
 
 .acc-section{

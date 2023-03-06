@@ -11,7 +11,7 @@ export default function Home() {
     React.useEffect(() => {
         Axios.get('https://backend-sm.vercel.app/checkLogin').then((response) => {
             if (response) {
-                hideloader();
+                document.getElementById('loading').style.display = 'none';
             }
             if (response.data.loggedIn === true) {
                 setLoginStatus(response.data.loggedIn);
@@ -21,9 +21,6 @@ export default function Home() {
             }
         })
     });
-    function hideloader() {
-          document.getElementById('loading').style.display = 'none';
-    }
 
     // const homeContent = () => {
     //     if (loginStatus === false) {
@@ -42,7 +39,7 @@ export default function Home() {
     return(
         <>
             <Header username={username} loginStatus={loginStatus} />
-            <span class="sr-only" id="loading"></span>
+            <span className="sr-only" id="loading"></span>
             {/* {homeContent()} */}
         </>
     )
