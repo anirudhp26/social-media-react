@@ -13,30 +13,34 @@ export default function Header(props) {
     };
 
     const userSearch = (value) => {
-        Axios.post("https://backend-sm.vercel.app/getUsers", {
+        Axios.post("http://localhost:3001/getUsers", {
             keyword: value,
-        }).then((responce) => {
-            console.log(responce.data);
-            setUsers(responce.data);
-        }).catch((err) => {
-            console.log(err);
         })
+            .then((responce) => {
+                console.log(responce.data);
+                setUsers(responce.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
     const handleSearch = (value) => {
-        userSearch(value);   
+        userSearch(value);
     };
     const onlyForLoggedin = () => {
         if (props.loginStatus) {
             return (
-                <div className="acc-section">
+                <div
+                    className="acc-section"
+                    onMouseLeave={() => {
+                        var img = document.getElementById("more-options");
+                        img.classList.toggle("dropdown-ul-modified");
+                    }}
+                >
                     <img
                         src="./anon-pp.png"
                         alt="pp"
                         onMouseEnter={() => {
-                            var img = document.getElementById("more-options");
-                            img.classList.toggle("dropdown-ul-modified");
-                        }}
-                        onMouseLeave={() => {
                             var img = document.getElementById("more-options");
                             img.classList.toggle("dropdown-ul-modified");
                         }}
@@ -88,7 +92,9 @@ export default function Header(props) {
                         <input
                             placeholder="Search"
                             onChange={(e) => {
-                                handleSearch(e.target.value);
+                                setTimeout(() => {
+                                    handleSearch(e.target.value);
+                                }, 1000);
                             }}
                         ></input>
                         {users.length === 0 ? (
