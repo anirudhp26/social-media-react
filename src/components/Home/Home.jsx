@@ -10,12 +10,10 @@ export default function Home() {
     Axios.defaults.withCredentials = true;
     React.useEffect(() => {
         Axios.get('https://backend-sm.vercel.app/checkLogin').then((response) => {
-            if (response) {
-                document.getElementById('loading').style.display = 'none';
-            }
             if (response.data.loggedIn === true) {
                 setLoginStatus(response.data.loggedIn);
                 setUsername(response.data.username);
+                document.getElementById('loading').style.display = 'none';
             } else {
                 navigate('/login');
             }
