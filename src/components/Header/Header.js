@@ -5,15 +5,16 @@ import Axios from "axios";
 export default function Header(props) {
     Axios.defaults.withCredentials = true;
     const [users, setUsers] = React.useState([]);
+    const [search, setSearch] = React.useState('');
     const navigate = useNavigate();
     const logout = () => {
         Axios.get('https://backend-sm.vercel.app/logout').then((response) => {
             navigate('/login');
         })
-    }
+    }   
 
     const userSearch = () => {
-        Axios.get('https://backend-sm.vercel.app/getUsers').then((responce) => {
+        Axios.get('https://backend-sm.vercel.app/getUsers', {keyword: search}).then((responce) => {
             console.log(responce.data);
             setUsers(responce.data);
         })
@@ -54,7 +55,9 @@ export default function Header(props) {
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/">Explore</a></li>
-                    <input placeholder="Search" onChange={userSearch}></input>
+                    <input placeholder="Search" onChange={(e) => {
+                        setSearch(e.target.value);
+                    }}></input>
                 </ul>
                 {onlyForLoggedin()}
             </div>
