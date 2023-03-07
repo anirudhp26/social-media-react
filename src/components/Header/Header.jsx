@@ -13,7 +13,7 @@ export default function Header(props) {
     };
 
     const userSearch = (value) => {
-        Axios.post("http://localhost:3001/getUsers", {
+        Axios.post("https://backend-sm.vercel.app/getUsers", {
             keyword: value,
         })
             .then((responce) => {
@@ -32,10 +32,6 @@ export default function Header(props) {
             return (
                 <div
                     className="acc-section"
-                    onMouseLeave={() => {
-                        var img = document.getElementById("more-options");
-                        img.classList.toggle("dropdown-ul-modified");
-                    }}
                 >
                     <img
                         src="./anon-pp.png"

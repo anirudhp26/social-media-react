@@ -112,8 +112,28 @@
     justify-content: center;
 }
 
-.alert{
+.chkpass-alert{
     color: black;
+    font-family: 'Didact Gothic', sans-serif;
     margin-left: 3rem;
     font-size: 12px;
+}
+
+.authButton > .fa-solid{
+    display: none;
+    margin: 3px 6px;
+}
+
+.alert{
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    border-radius: 8px;
+    top: -18vh;
+    right: 10px;
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    transition: all 0.5s;
+    min-width: 260px;
 }
