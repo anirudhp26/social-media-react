@@ -4,15 +4,20 @@ import Login from "./components/LoginPage/Login";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Home from './components/Home/Home.jsx';
 import UserProfile from "./components/UserProfilePage/UserProfile";
+import Layout from "./Layout.js";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} index/>
-        <Route path="login" element={<Login />} />
-        <Route path=":username" element={<UserProfile />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} index />
+          <Route path="login" element={<Login />} />
+          <Route path=":username" element={<UserProfile />} />
+          <Route element={<Layout />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

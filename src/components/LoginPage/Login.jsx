@@ -20,8 +20,8 @@ export default function Login() {
         Axios.post(`https://backend-sm.vercel.app/login`, {username: username, email: email, password: password}).then((response) => {
             setMessage(response.data.message);
             setTimeout(() => {
-                document.getElementById("alert").style.top = "20px"
                 document.getElementById("loader").style.display = "none";
+                document.getElementById("alert").style.top = "20px"
             }, 1000);
             if (response.data.loginStatus === true) {
                 navigate('/');

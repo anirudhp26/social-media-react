@@ -102,15 +102,12 @@
 
 .acc-section{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 15%;
     height: 100%;
     justify-content: center;
     transition: all 0.5s;
     align-items: center;
-}
-.acc-section:hover{
-    background-color: black;
 }
 .dropdown-ul {
     display: flex;
@@ -145,17 +142,80 @@
 .acc-section > a {
     font-size: 15px;
     text-decoration: none;
+    margin-left: 10px;
     color: white;
 }
-.acc-section > img {
-    width: 45px;
-    margin-bottom: 3px;
-    min-width: 45px;
+
+.acc-section > i {
+    font-size: 25px;
+    padding: 0.8rem;
+    background-color: white;
+    border-radius: 50%;
 }
 
+.mob-search{
+    display: none !important;
+}
 
-@media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
+.root > .fa-solid {
+    display: none;
+    font-size: 20px;
+    background-color: white;
+    padding: 1rem;
+    /* border-radius: 20px; */
+}
+
+@media only screen and (max-width: 950px) {
+    .root > p, .root > .fa-solid{
+        z-index: 1;
     }
-  }
+    .root > ul{
+        position: absolute;
+        top: -100%;
+        width: 100%;
+        background-color: rgb(32, 32, 32);
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        transition: all 0.5s;
+    }
+    .root > ul > li {
+        width: 90%;
+        margin-top: 2rem;
+        height: 3rem;
+    }
+
+    .mob-search {
+        display: flex !important;
+        margin-top: 2rem;
+    }
+
+    .acc-section{
+        flex-direction: row;
+        z-index: 1;
+        justify-content: end;
+        width: 50%;
+        background-color: rgb(32, 32, 32);
+    }
+
+    .acc-section > a{
+        margin-left: 1rem;
+    }
+
+    .root > ul > .userSearch {
+        display: none;
+    }
+
+    .logout > a{
+        color: red !important;
+        font-weight: 500;
+    }
+
+    .root > .fa-solid {
+        display: flex;
+    }
+
+    .menu{
+        top: 12vh !important;
+    }
+}

@@ -2,10 +2,24 @@ import React from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-export default function Header(props) {
+export default function Header() {
     Axios.defaults.withCredentials = true;
+    const [username, setUsername] = React.useState('');
+    const [loginStatus, setLoginStatus] = React.useState(false);
     const [users, setUsers] = React.useState([]);
     const navigate = useNavigate();
+    React.useEffect(() => {
+        Axios.get('https://backend-sm.vercel.app/checkLogin').then((response) => {
+            if (response.data.loggedIn === true) {
+                setLoginStatus(response.data.loggedIn);
+                setUsername(response.data.username);
+            } else {
+                navigate('/login');
+                console.log("Not logged in");
+            }
+        })
+    }, [username, loginStatus]);
+
     const logout = () => {
         Axios.get("https://backend-sm.vercel.app/logout").then((response) => {
             navigate("/login");
@@ -28,24 +42,28 @@ export default function Header(props) {
         userSearch(value);
     };
     const onlyForLoggedin = () => {
-        if (props.loginStatus) {
+        if (loginStatus) {
             return (
                 <div
                     className="acc-section"
                 >
-                    <img
+                    <i className="fa-regular fa-user" onClick={() => {
+                        var img = document.getElementById("more-options");
+                        img.classList.toggle("dropdown-ul-modified");
+                    }}></i>
+                    {/* <img
                         src="./anon-pp.png"
                         alt="pp"
-                        onMouseEnter={() => {
+                        onClick={() => {
                             var img = document.getElementById("more-options");
                             img.classList.toggle("dropdown-ul-modified");
                         }}
-                    ></img>
-                    <a href="/">{props.username}</a>
+                    ></img> */}
+                    <a href="/">{username}</a>
                     <ul
                         className="dropdown-ul"
                         id="more-options"
-                        onMouseLeave={() => {
+                        onClick={() => {
                             var img = document.getElementById("more-options");
                             img.classList.toggle("dropdown-ul-modified");
                         }}
@@ -53,7 +71,7 @@ export default function Header(props) {
                         <li className="dropdown-li">
                             <a
                                 onClick={() => {
-                                    navigate(`/${props.username}`);
+                                    navigate(`/${username}`);
                                 }}
                             >
                                 My Account
@@ -69,7 +87,7 @@ export default function Header(props) {
                 </div>
             );
         } else {
-            return <button onClick={navigate("/login")}>Login/SignUP</button>;
+            return <button onClick={() => {navigate('/login')}}>Login/SignUP</button>;
         }
     };
 
@@ -77,12 +95,15 @@ export default function Header(props) {
         <>
             <div className="root">
                 <p>LOGO</p>
-                <ul>
+                <ul id="ul">
                     <li>
                         <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="/">Explore</a>
+                    </li>
+                    <li className="mob-search">
+                        <a href="/">Search People</a>
                     </li>
                     <div className="userSearch">
                         <input
@@ -101,7 +122,9 @@ export default function Header(props) {
                                     {users.map((value) => {
                                         return (
                                             <li key={value._id}>
-                                                <a>{value.username}</a>
+                                                <a onClick={() => {
+                                                    navigate(`/${value.username}`);
+                                                }}>{value.username}</a>
                                             </li>
                                         );
                                     })}
@@ -111,6 +134,9 @@ export default function Header(props) {
                     </div>
                 </ul>
                 {onlyForLoggedin()}
+                <i className="fa-solid fa-bars" onClick={() => {
+                    document.getElementById("ul").classList.toggle("menu");
+                }}></i>
             </div>
         </>
     );
