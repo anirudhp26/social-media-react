@@ -1,0 +1,12 @@
+.profile-root{
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.psec-1{
+    width: 40%;
+}
+.psec-2{
+    width: 60%;
+}
