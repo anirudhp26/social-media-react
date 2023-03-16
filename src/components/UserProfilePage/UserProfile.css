@@ -1,12 +1,56 @@
 .profile-root{
     width: 60vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin: auto;
+    top: 10vh;
+    border: 1px solid grey;
+    padding: 3rem;
 }
 
-.psec-1{
-    width: 40%;
+.psec-1{ 
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.psec-1 > i {
+    font-size: 6rem;
+    padding: 3rem;
+}
+.psec-1 > .psec1-userinfo{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.connectionInfo{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.connection-num{
+    font-weight: 900;
+}
+.connection-type{
+    color: grey;
 }
 .psec-2{
-    width: 60%;
+    width: 100%;
+}
+
+@media only screen and (max-width: 950px){
+    .psec-1{
+        flex-direction: column;
+    }
+    .psec-1 > i{
+        font-size: 50px;
+        text-align: center;
+    }
+    .psec-1 > .psec1-userinfo{
+        width: 70%;
+        margin: auto;
+        height: 30vh;
+    }
 }
