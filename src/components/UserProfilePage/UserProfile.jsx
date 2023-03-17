@@ -14,7 +14,6 @@ export default function UserProfile() {
     return(
         <>
             <Header />
-            <p>Profile page for {username}</p>
             <div className="profile-root">
                 <div className="psec-1">
                     <i className="fa-regular fa-user"></i>
