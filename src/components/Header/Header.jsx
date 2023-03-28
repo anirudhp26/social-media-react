@@ -14,7 +14,9 @@ export default function Header() {
                 setLoginStatus(response.data.loggedIn);
                 setUsername(response.data.username);
             } else {
-                navigate('/login');
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
                 console.log("Not logged in");
             }
         })
