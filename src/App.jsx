@@ -1,13 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import Login from "./components/LoginPage/Login";
+import Login from "./scenes/LoginPage/Login";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Home from './components/Home/Home.jsx';
-import UserProfile from "./components/UserProfilePage/UserProfile";
+import Home from './scenes/Home/Home.jsx';
+import UserProfile from "./scenes/UserProfilePage/UserProfile";
 import Layout from "./Layout.js";
+import { Provider } from "react-redux";
 function App() {
   return (
-    <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} index />
@@ -17,7 +17,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
   );
 }
 

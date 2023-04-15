@@ -1,16 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import Header from "../Header/Header";
+import Header from "../../components/Header/Header";
 import './UserProfile.css'
 export default function UserProfile() {
     const [userinfo, setUserinfo] = React.useState({});
     let { username } = useParams();
-    // React.useEffect(() => {
-    //     Axios.post("https://backend-sm.vercel.app/getUserinfo").then((responce) => {
-    //         setUserinfo(responce.data);
-    //     })
-    // }, []);
     return(
         <>
             <Header />

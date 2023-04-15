@@ -2,7 +2,7 @@ import React from 'react'
 import './Login.css'
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Alert from '../Alert/Alert.jsx';
+import Alert from '../../components/Alert/Alert.jsx';
 export default function Login() {
     const [loginsignupToggle, setLoginsignuptoggle] = React.useState(true);
     const [email, setEmail] = React.useState('');
@@ -17,7 +17,8 @@ export default function Login() {
     Axios.defaults.withCredentials = true;
     const formSubmitlogin = () => {
         document.getElementById("loader").style.display = "flex";
-        Axios.post(`https://backend-sm.vercel.app/login`, {username: username, email: email, password: password}).then((response) => {
+        Axios.post(`https://backend-sm.vercel.app/auth/login`, {username: username, email: email, password: password}).then((response) => {
+            console.log(response);
             setMessage(response.data.message);
             setTimeout(() => {
                 document.getElementById("loader").style.display = "none";
@@ -30,8 +31,8 @@ export default function Login() {
     }
     const formSubmitsignup = () => {
         document.getElementById("loader").style.display = "flex";
-        Axios.post('https://backend-sm.vercel.app/signup', {username: username, email: email, password: password}).then((response) => {
-            console.log(response.data);
+        Axios.post('https://backend-sm.vercel.app/auth/signup', {username: username, email: email, password: password}).then((response) => {
+            console.log(response.data.user);
             setMessage(response.data.message);
             navigate('/');
         })
@@ -46,13 +47,6 @@ export default function Login() {
             return null;
         }
     }
-    // function onSignIn(googleUser) {
-    //     var profile = googleUser.getBasicProfile();
-    //     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    //     console.log('Name: ' + profile.getName());
-    //     console.log('Image URL: ' + profile.getImageUrl());
-    //     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    //   }
 
     const loginsignupform = () => {
         if (loginsignupToggle === true) {        
@@ -75,7 +69,6 @@ export default function Login() {
                             <button className="moreButton" onClick={btntoggle}>
                                 SignUp
                             </button>
-                            {/* <div className="g-signin2" data-onsuccess="onSignIn"></div> */}
                         </div>
                     </div>
                 </div>

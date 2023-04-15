@@ -5,31 +5,18 @@ import Axios from "axios";
 export default function Header() {
     Axios.defaults.withCredentials = true;
     const [username, setUsername] = React.useState('');
-    const [loginStatus, setLoginStatus] = React.useState(false);
+    const [loginStatus, setLoginStatus] = React.useState(true);
     const [users, setUsers] = React.useState([]);
     const navigate = useNavigate();
-    React.useEffect(() => {
-        Axios.get('https://backend-sm.vercel.app/checkLogin').then((response) => {
-            if (response.data.loggedIn === true) {
-                setLoginStatus(response.data.loggedIn);
-                setUsername(response.data.username);
-            } else {
-                setTimeout(() => {
-                    navigate('/login');
-                }, 2000);
-                console.log("Not logged in");
-            }
-        })
-    }, [username, loginStatus]);
 
     const logout = () => {
-        Axios.get("https://backend-sm.vercel.app/logout").then((response) => {
-            navigate("/login");
-        });
+        // Axios.get("https://backend-sm.vercel.app/logout").then((response) => {
+        //     navigate("/login");
+        // });
     };
 
     const userSearch = (value) => {
-        Axios.post("https://backend-sm.vercel.app/getUsers", {
+        Axios.post("https://backend-sm.vercel.app/auth/getUsers", {
             keyword: value,
         })
             .then((responce) => {
