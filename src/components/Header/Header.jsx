@@ -10,9 +10,7 @@ export default function Header() {
     const navigate = useNavigate();
 
     const logout = () => {
-        // Axios.get("https://backend-sm.vercel.app/logout").then((response) => {
-        //     navigate("/login");
-        // });
+        
     };
 
     const userSearch = (value) => {
@@ -40,14 +38,6 @@ export default function Header() {
                         var img = document.getElementById("more-options");
                         img.classList.toggle("dropdown-ul-modified");
                     }}></i>
-                    {/* <img
-                        src="./anon-pp.png"
-                        alt="pp"
-                        onClick={() => {
-                            var img = document.getElementById("more-options");
-                            img.classList.toggle("dropdown-ul-modified");
-                        }}
-                    ></img> */}
                     <a href="/">{username}</a>
                     <ul
                         className="dropdown-ul"
